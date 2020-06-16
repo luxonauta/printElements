@@ -14,8 +14,8 @@
     "name": "Lucas de França",
     "email": "luxonauta@gmail.com"
   },
-  "license": "ISC",
-  "main": "index.js",
+  "license": "MIT",
+  "main": "printElements",
   "scripts": {
     "gulp": "gulp"
   },
