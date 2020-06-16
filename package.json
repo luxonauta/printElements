@@ -1,0 +1,38 @@
+{
+  "name": "printelements",
+  "version": "1.0.0",
+  "description": "JS library to print content from a page as a document.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pedrorrd-sousa/printElements.git"
+  },
+  "author": {
+    "name": "Pedro Renato Rodrigues de Sousa",
+    "email": "pedrorrdesousa97@gmail.com"
+  },
+  "co-author": {
+    "name": "Lucas de França",
+    "email": "luxonauta@gmail.com"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "keywords": [
+    "js",
+    "print",
+    "PDF",
+    "print to PDF"
+  ],
+  "homepage": "https://github.com/pedrorrd-sousa/printElements",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify-es": "^2.0.0"
+  }
+}
