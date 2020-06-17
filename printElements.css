@@ -4,7 +4,7 @@
     left: -1000vw;
 }
 
-@media print{
+@media print {
     header,
     main,
     footer {
@@ -31,7 +31,11 @@
     .outprint h6 {
         width: 100%;
         margin: 2em 0 1em;
+        -webkit-column-break-after: avoid;
+        page-break-after: avoid;
         break-after: avoid;
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
         break-inside: avoid;
         font-size: 18pt;
     }
@@ -56,12 +60,16 @@
 
     .outprint ul,
     .outprint ol {
+        -webkit-column-break-before: avoid;
+        page-break-before: avoid;
         break-before: avoid;
     }
 
     .outprint table,
     .outprint img,
     .outprint svg {
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
         break-inside: avoid;
     }
 
