@@ -1,14 +1,13 @@
 async function printElements(json) {
     let outprint = document.createElement("div");
-    outprint.setAttribute("class", "outprint");
+    outprint.classList.add("outprint");
     document.querySelector("body").append(outprint);
 
-    // Fetch metadata from JSON file
+    // Fetch meta data from JSON file
     fetch(json).then(response => {
         return response.json();
     }).then(json => {
-        // In order: the HTML targets, the tags that will be included in the print and the class that will determine what will not be printed.
-        // A array of promises to be made and array of the generated html from all pages to be printed.
+        // In order: target .html, tags to be included in the document, class to exclude elements, array of promises to be made and array of the generated html from all pages to be printed
         const targets = json.targets;
         const tags = json.tags.toString();
         const willNotPrint = json.willNotPrint;
@@ -32,8 +31,22 @@ async function printElements(json) {
                     elem.push(item.cloneNode(true));
                 });
 
-                // Removes the included tags that contain the class that excludes from printing (defined in JSON and assigned in variable willNotPrint).
-                elem = elem.filter(item => !item.classList.contains(willNotPrint));
+                let index = [];
+
+                elem.forEach((item, indexItem) => {
+                    // Stores the indexes of all elements to be removed
+                    if (item.classList.contains(willNotPrint))
+                        index.push(indexItem);
+                    // Removes all children that are to be removed
+                    item.querySelectorAll(willNotPrint).forEach(elem => {
+                        elem.remove()
+                    });
+                });
+
+                // Removes all elements that are to be removed
+                index.forEach(item => {
+                    elem.splice(item, 1);
+                });
 
                 // Append the new nodes to outprint
                 elem.forEach(item => {
@@ -42,15 +55,15 @@ async function printElements(json) {
             });
         }).then(() => {
             setTimeout(() => {
-                // Opens the print window to print the current document.
+                // Print the document
                 window.print(document.querySelector(".outprint"));
             }, 125);
         }).then(() => {
-            // Removes and erases the data inside the current outprint.
+            // Removes and erases the data inside outprint
             setTimeout(() => {
                 outprint.remove();
                 outprint.innerHTML = "";
-            }, 250);
+            }, 130);
         });
     });
 }
