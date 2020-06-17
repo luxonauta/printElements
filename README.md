@@ -80,4 +80,4 @@ Soon we will be adding a contribution file :shipit:, with some rules to direct a
 
 #### Copyright and License
 
-Copyright (c) 2020 [Lucas de França](https://github.com/luxonauta) | [aqazix](https://github.com/aqazix). Code released under the [MIT license](https://github.com/aqazix/printElements/blob/master/LICENSE).
+Copyright (c) 2020 [Lucas de França](https://github.com/luxonauta) | [Pedro Renato Rodrigues de Sousa](https://github.com/aqazix). Code released under the [MIT license](https://github.com/aqazix/printElements/blob/master/LICENSE).
