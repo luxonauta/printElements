@@ -11,7 +11,7 @@ async function printElements(json) {
         // A array of promises to be made and array of the generated html from all pages to be printed.
         const targets = json.targets;
         const tags = json.tags.toString();
-        const willNotPrint = json.willNotPrint;
+        const willNotPrint = json.willNotPrint.replace(".","");
         let promises = [];
         let html = [];
 
@@ -33,7 +33,7 @@ async function printElements(json) {
                 });
 
                 // Removes the included tags that contain the class that excludes from printing (defined in JSON and assigned in variable willNotPrint).
-                elem = elem.filter(item => !item.classList.contains(willNotPrint.replace(".","")));
+                elem = elem.filter(item => !item.classList.contains(willNotPrint));
 
                 // Append the new nodes to outprint
                 elem.forEach(item => {
