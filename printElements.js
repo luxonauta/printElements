@@ -33,7 +33,7 @@ async function printElements(json) {
                 });
 
                 // Removes the included tags that contain the class that excludes from printing (defined in JSON and assigned in variable willNotPrint).
-                elem = elem.filter(item => !item.classList.contains(willNotPrint));
+                elem = elem.filter(item => !item.classList.contains(willNotPrint.replace(".","")));
 
                 // Append the new nodes to outprint
                 elem.forEach(item => {
