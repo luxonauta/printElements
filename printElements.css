@@ -41,8 +41,6 @@
     }
 
     .outprint p,
-    .outprint a,
-    .outprint span,
     .outprint label,
     .outprint option,
     .outprint small {
@@ -50,12 +48,13 @@
         font-size: 12pt;
     }
 
-    .outprint a:after {
-        content: " (" attr(href) ")";
+    .outprint a,
+    .outprint span {
+        font-size: inherit;
     }
 
-    .outprint a:not(:local-link):after {
-        content: " < " attr(href) "> ";
+    .outprint a[href]:after {
+        content: " (" attr(href) ")";
     }
 
     .outprint ul,
