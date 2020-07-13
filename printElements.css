@@ -53,7 +53,7 @@
         font-size: inherit;
     }
 
-    .outprint a[href]:after {
+    .outprint a[href]:not(.local):after {
         content: " (" attr(href) ")";
     }
 
