@@ -5,7 +5,7 @@ const rename = require("gulp-rename");
 
 exports.default = () => {
     gulp.watch("printElements.js", () => {
-        gulp.src("printElements.js")
+        return gulp.src("printElements.js")
             .pipe(babel({ "presets": ["@babel/env"] }))
             .pipe(uglify())
             .pipe(rename("printElements.min.js"))
