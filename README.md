@@ -16,7 +16,7 @@ In addition to the tags that **will not be printed** according to a specific cla
 
 You can use printElements by CDN, provided by the :mechanical_arm:[jsDeliver](https://www.jsdelivr.com/?docs=gh) service, below:
 
-```
+```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.css">
 
 <script src="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.js" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@ To use it, the content to be printed needs to be encapsulated in the first ``<ma
 
 Then, in your script, you should call the function ``printElements(options)`` and pass an object as a parameter, with the options that suit your project.
 
-```
+```html
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.css">
 <head>
