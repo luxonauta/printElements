@@ -2,19 +2,19 @@
 
 > a JS library to print content from HTML pages as a document.
 
-You can find it's documentation [here](https://aqazix.github.io/printElementsDocs/)
+See the documentation site [here](https://aqazix.github.io/printElementsDocs/).
 
 ## :monocle_face: What does it do?
 
-With this JS library, you can select the tags of your HTML files that you want the PDF or Print to be generated.
+This JS library, allow to select the HTML files tags to be transformed into a PDF, for printing or not.
 
-In addition to the tags that **will not be printed** according to a specific class, more details below :wink:.
+Also, the tags that not will be included according to a specific class; see more details below. :wink:.
 
 ## Quick Start
 
 ### CDN
 
-You can use printElements by CDN, provided by the :mechanical_arm:[jsDeliver](https://www.jsdelivr.com/?docs=gh) service, below:
+To use printElements by CDN, copy the code with the CDN provided by the :mechanical_arm:[jsDeliver](https://www.jsdelivr.com/?docs=gh) service, below:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.css">
@@ -24,13 +24,13 @@ You can use printElements by CDN, provided by the :mechanical_arm:[jsDeliver](ht
 
 ### By Download
 
-You can also download minified files from the [``dist/``](https://github.com/pedrorrd-sousa/printElements/tree/master/dist) folder and include them in your HTML with a link and script.
+Download the minified files from the [``dist/``](https://github.com/pedrorrd-sousa/printElements/tree/master/dist) folder and include them in the HTML with a link and script.
 
 #### :receipt: How to set up and use
 
 To use it, the content to be printed needs to be encapsulated in the first ``<main>`` tag.
 
-Then, in your script, you should call the function ``printElements(options)`` and pass an object as a parameter, with the options that suit your project.
+Then, in your script, call the function ``printElements(options)`` and pass an object as a parameter, with the options that suit your project.
 
 ```html
 <head>
@@ -38,16 +38,16 @@ Then, in your script, you should call the function ``printElements(options)`` an
 <head>
 <body>
     <main>
-        <h1>Your Content!</h1>
+        <h1>My Content!</h1>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.js" crossorigin="anonymous"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.js" crossorigin="anonymous" defer="true"></script>
+    <script defer="true">
         const options = {
             "targets": [
                 "index.html",
-                "pages/page2.html",
-                "../page3.html"
+                "pages/page-2.html",
+                "../page-3.html"
             ],
             "tags": [
                 "h1",
@@ -67,15 +67,15 @@ Then, in your script, you should call the function ``printElements(options)`` an
 <body>
 ```
 
-In this object you should declare a few things:
+In this object, should be declared a few things:
 
  - **Targets** - The relative paths to the pages to be included in the print function.
- - **Tags** - An array of the tags to be printed (Ex: ``h1``, ``h2``, ``h3``, ``p``, ``li``, **etc**.).
+ - **Tags** - An array of the tags to be printed (Ex: ``h1``, ``h2``, ``h3``, ``p``, ``li``).
  - **willNotPrint** - A class selector that will exclude elements in the function (Ex: ``.not-print``).
 
 #### Contributing
 
-Soon we will be adding a contribution file :shipit:, with some rules to direct and facilitate the development of the library, for everyone who wants to help and be involved. :vulcan_salute:
+Soon we will be adding a contribution file :shipit:, with some rules to direct and facilitate the library's development, for everyone who wants to help and be involved. :vulcan_salute:
 
 #### Copyright and License
 
