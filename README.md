@@ -2,7 +2,7 @@
 
 > a JS library to print content from HTML pages as a document.
 
-See the documentation site [here](https://aqazix.github.io/printElementsDocs/).
+See the documentation site [here](https://luxonauta.github.io/printElementsDocs/).
 
 ## :monocle_face: What does it do?
 
@@ -34,14 +34,14 @@ Then, in your script, call the function ``printElements(options)`` and pass an o
 
 ```html
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/printElements@latest/dist/printElements.min.css">
 <head>
 <body>
     <main>
         <h1>My Content!</h1>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.js" crossorigin="anonymous" defer="true"></script>
+    <script src="https://cdn.jsdelivr.net/gh/luxonauta/printElements@latest/dist/printElements.min.js" crossorigin="anonymous"></script>
     <script defer="true">
         const options = {
             "targets": [
@@ -73,10 +73,6 @@ In this object, should be declared a few things:
  - **Tags** - An array of the tags to be printed (Ex: ``h1``, ``h2``, ``h3``, ``p``, ``li``).
  - **willNotPrint** - A class selector that will exclude elements in the function (Ex: ``.not-print``).
 
-#### Contributing
-
-Soon we will be adding a contribution file :shipit:, with some rules to direct and facilitate the library's development, for everyone who wants to help and be involved. :vulcan_salute:
-
 #### Copyright and License
 
-Copyright (c) 2020 [Lucas de França](https://github.com/luxonauta) | [Pedro Renato Rodrigues de Sousa](https://github.com/aqazix). Code released under the [MIT license](https://github.com/aqazix/printElements/blob/master/LICENSE).
+Copyright (c) 2021 [Lucas de França](https://github.com/luxonauta) | [Pedro Renato Rodrigues de Sousa](https://github.com/aqazix). Code released under the [MIT license](https://github.com/luxonauta/printElements/blob/master/LICENSE).
