@@ -4,17 +4,21 @@
 
 See the documentation site [here](https://luxonauta.github.io/printElementsDocs/).
 
-## :monocle_face: What does it do?
+## Why?
 
-This JS library, allow to select the HTML files tags to be transformed into a PDF, for printing or not.
+I just needed to print the contents of a static page that had previously been coded…
 
-Also, the tags that not will be included according to a specific class; see more details below. :wink:.
+Doing this shouldn't be difficult, however, at the time it cost me a great deal of my time! Changing the style took dozens of steps to get it the way I wanted the PDF to look (simple, just the content!).
 
-## Quick Start
+## How does it work?
 
-### CDN
+With this lib, you can select the tags of your HTML files that you want the PDF or Print to be generated.
 
-To use printElements by CDN, copy the code with the CDN provided by the :mechanical_arm:[jsDeliver](https://www.jsdelivr.com/?docs=gh) service, below:
+In addition to the tags that will not be printed according to a specific class.
+
+## Install
+
+You can use printElements by CDN, provided by the jsDeliver service, below:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.css">
@@ -22,15 +26,21 @@ To use printElements by CDN, copy the code with the CDN provided by the :mechani
 <script src="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.js" crossorigin="anonymous"></script>
 ```
 
-### By Download
+Or you can download it directly from the [repository on GitHub](https://github.com/luxonauta/printElements/tree/master/dist).
 
-Download the minified files from the [``dist/``](https://github.com/pedrorrd-sousa/printElements/tree/master/dist) folder and include them in the HTML with a link and script.
+## Setup
 
-#### :receipt: How to set up and use
+Now, to use it, the content to be printed needs to be encapsulated in the first ``<main>`` tag.
 
-To use it, the content to be printed needs to be encapsulated in the first ``<main>`` tag.
+Then, in your script, you should call the function ``printElements(options)`` and pass an object as a parameter, with the options that suit your project.
 
-Then, in your script, call the function ``printElements(options)`` and pass an object as a parameter, with the options that suit your project.
+In this object, should be declared a few things:
+
+- **Targets** - The relative paths to the pages to be included in the print function.
+- **Tags** - An array of the tags to be printed.
+- **willNotPrint** - A class selector that will exclude elements in the function.
+
+See an example below:
 
 ```html
 <head>
@@ -46,8 +56,6 @@ Then, in your script, call the function ``printElements(options)`` and pass an o
         const options = {
             "targets": [
                 "index.html",
-                "pages/page-2.html",
-                "../page-3.html"
             ],
             "tags": [
                 "h1",
@@ -60,19 +68,17 @@ Then, in your script, call the function ``printElements(options)`` and pass an o
             "willNotPrint": "not-print"
         };
 
-        document.querySelector("#myBtn").addEventListener("click", () => {
+        myBtn.addEventListener("click", () => {
             printElements(options);
         });
     </script>
 <body>
 ```
 
-In this object, should be declared a few things:
+You might be wondering what the use case of this class (``"willNotPrint": "not-print"``)?`
 
- - **Targets** - The relative paths to the pages to be included in the print function.
- - **Tags** - An array of the tags to be printed (Ex: ``h1``, ``h2``, ``h3``, ``p``, ``li``).
- - **willNotPrint** - A class selector that will exclude elements in the function (Ex: ``.not-print``).
+The idea behind the creation of this class is that with it, is possible to manually ignore a specific appearance of a tag, which has been specified in the object passed as a parameter to printElements, to be printed.
 
-#### Copyright and License
+### Copyright and License
 
 Copyright (c) 2021 [Lucas de França](https://github.com/luxonauta) | [Pedro Renato Rodrigues de Sousa](https://github.com/aqazix). Code released under the [MIT license](https://github.com/luxonauta/printElements/blob/master/LICENSE).
