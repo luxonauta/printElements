@@ -4,13 +4,9 @@
   "description": "JS library to print content from a page as a document.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aqazix/printElements.git"
+    "url": "https://github.com/luxonauta/printElements.git"
   },
   "author": {
-    "name": "Pedro Renato Rodrigues de Sousa",
-    "email": "pedrorrdesousa97@gmail.com"
-  },
-  "co-author": {
     "name": "Lucas de França",
     "email": "luxonauta@gmail.com"
   },
@@ -20,15 +16,14 @@
     "gulp": "gulp"
   },
   "keywords": [
-    "js",
     "print",
     "PDF",
     "print to PDF"
   ],
-  "homepage": "https://github.com/aqazix/printElements.git",
+  "homepage": "https://github.com/luxonauta/printElements.git",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-cli": "^2.3.0",

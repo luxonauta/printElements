@@ -2,50 +2,60 @@
 
 > a JS library to print content from HTML pages as a document.
 
-## :monocle_face: What does it do?
+See the documentation site [here](https://luxonauta.github.io/printElementsDocs/).
 
-With this JS library, you can select the tags of your HTML files that you want the PDF or Print to be generated.
+## Why?
 
-In addition to the tags that **will not be printed** according to a specific class, more details below :wink:.
+I just needed to print the contents of a static page that had previously been coded…
 
-## Quick Start
+Doing this shouldn't be difficult, however, at the time it cost me a great deal of my time! Changing the style took dozens of steps to get it the way I wanted the PDF to look (simple, just the content!).
 
-### CDN
+## How does it work?
 
-You can use printElements by CDN, provided by the :mechanical_arm:[jsDeliver](https://www.jsdelivr.com/?docs=gh) service, below:
+With this lib, you can select the tags of your HTML files that you want the PDF or Print to be generated.
 
-```
+In addition to the tags that will not be printed according to a specific class.
+
+## Install
+
+You can use printElements by CDN, provided by the jsDeliver service, below:
+
+```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.css">
 
 <script src="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.js" crossorigin="anonymous"></script>
 ```
 
-### By Download
+Or you can download it directly from the [repository on GitHub](https://github.com/luxonauta/printElements/tree/master/dist).
 
-You can also download minified files from the [``dist/``](https://github.com/pedrorrd-sousa/printElements/tree/master/dist) folder and include them in your HTML with a link and script.
+## Setup
 
-#### :receipt: How to set up and use
-
-To use it, the content to be printed needs to be encapsulated in the first ``<main>`` tag.
+Now, to use it, the content to be printed needs to be encapsulated in the first ``<main>`` tag.
 
 Then, in your script, you should call the function ``printElements(options)`` and pass an object as a parameter, with the options that suit your project.
 
-```
+In this object, should be declared a few things:
+
+- **Targets** - The relative paths to the pages to be included in the print function.
+- **Tags** - An array of the tags to be printed.
+- **willNotPrint** - A class selector that will exclude elements in the function.
+
+See an example below:
+
+```html
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/printElements@latest/dist/printElements.min.css">
 <head>
 <body>
     <main>
-        <h1>Your Content!</h1>
+        <h1>My Content!</h1>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/gh/aqazix/printElements@latest/dist/printElements.min.js" crossorigin="anonymous"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/gh/luxonauta/printElements@latest/dist/printElements.min.js" crossorigin="anonymous"></script>
+    <script defer="true">
         const options = {
             "targets": [
                 "index.html",
-                "pages/page2.html",
-                "../page3.html"
             ],
             "tags": [
                 "h1",
@@ -58,23 +68,17 @@ Then, in your script, you should call the function ``printElements(options)`` an
             "willNotPrint": "not-print"
         };
 
-        document.querySelector("#myBtn").addEventListener("click", () => {
+        myBtn.addEventListener("click", () => {
             printElements(options);
         });
     </script>
 <body>
 ```
 
-In this object you should declare a few things:
+You might be wondering what the use case of this class (``"willNotPrint": "not-print"``)?`
 
- - **Targets** - The relative paths to the pages to be included in the print function.
- - **Tags** - An array of the tags to be printed (Ex: ``h1``, ``h2``, ``h3``, ``p``, ``li``, **etc**.).
- - **willNotPrint** - A class selector that will exclude elements in the function (Ex: ``.not-print``).
+The idea behind the creation of this class is that with it, is possible to manually ignore a specific appearance of a tag, which has been specified in the object passed as a parameter to printElements, to be printed.
 
-#### Contributing
+### Copyright and License
 
-Soon we will be adding a contribution file :shipit:, with some rules to direct and facilitate the development of the library, for everyone who wants to help and be involved. :vulcan_salute:
-
-#### Copyright and License
-
-Copyright (c) 2020 [Lucas de França](https://github.com/luxonauta) | [Pedro Renato Rodrigues de Sousa](https://github.com/aqazix). Code released under the [MIT license](https://github.com/aqazix/printElements/blob/master/LICENSE).
+Copyright (c) 2021 [Lucas de França](https://github.com/luxonauta) | [Pedro Renato Rodrigues de Sousa](https://github.com/aqazix). Code released under the [MIT license](https://github.com/luxonauta/printElements/blob/master/LICENSE).
