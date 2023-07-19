@@ -1,7 +1,7 @@
 {
   "name": "printelements",
-  "version": "1.0.0",
-  "description": "A js library to print content from a page as a document.",
+  "version": "1.0.1",
+  "description": "JS library to print content from a page as a document.",
   "repository": {
     "type": "git",
     "url": "https://github.com/luxonauta/printElements.git"

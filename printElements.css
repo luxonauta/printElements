@@ -72,6 +72,10 @@
         break-inside: avoid;
     }
 
+    .outprint img.print[alt]:after {
+        content: attr(alt);
+    }
+
     .outprint .image {
         margin: 5em 0;
     }

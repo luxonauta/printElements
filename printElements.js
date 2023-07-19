@@ -1,40 +1,44 @@
 const printElements = options => {
-  let outprint = document.createElement("div")
-  outprint.classList.add("outprint")
-  document.querySelector("body").append(outprint)
+    let outprint = document.createElement("div")
+    outprint.classList.add("outprint")
+    document.querySelector("body").append(outprint)
 
-  let { targets, tags, willNotPrint, wrapper } = options
-  tags = tags.toString()
-  willNotPrint = willNotPrint.replace(".", "")
+    let { targets, tags, willNotPrint, wrapper } = options ? options : {}
 
-  let promises = []
-  let html = []
+    targets = targets && targets.length > 0
+        ? targets
+        : ["index.html"]
+    tags = tags && tags.length > 0
+        ? tags.toString()
+        : "h1, h2, h3, h4, h5, h6, p, ul, table, small, img.print, svg.print, figcaption"
+    willNotPrint = willNotPrint
+        ? willNotPrint.replace(".", "")
+        : ""
+    wrapper = wrapper
+        ? wrapper
+        : "main"
 
-  targets.forEach(target => {
-      promises.push(fetch(target)
-          .then(response => response.text())
-          .then(string => html.push(new DOMParser().parseFromString(string, "text/html"))))
+    let html = []
 
-  })
+    Promise.all(targets.map(target => fetch(target)
+        .then(response => response.text())
+        .then(string => html.push(new DOMParser().parseFromString(string, "text/html")))
+    )).then(() => {
+        html.forEach(page => {
+            let elem = [...page.querySelector(wrapper).querySelectorAll(tags)]
+                .map(item => item.cloneNode(true))
+                .filter(item => !item.classList.contains(willNotPrint))
 
-  Promise.all(promises).then(() => {
-      html.forEach(page => {
-          let elem = []
+            elem.forEach(item => document.querySelector(".outprint").append(item))
+        })
 
-          page.querySelector(wrapper ? wrapper : "main").querySelectorAll(tags).forEach(item => elem.push(item.cloneNode(true)))
-
-          elem = elem.filter(item => !item.classList.contains(willNotPrint))
-
-          elem.forEach(item => document.querySelector(".outprint").append(item))
-      })
-
-      setTimeout(() => {
-          window.print(document.querySelector(".outprint"))
-      }, 125)
-  }).then(() => {
-      setTimeout(() => {
-          outprint.remove()
-          outprint.innerHTML = ""
-      }, 250)
-  })
+        setTimeout(() => {
+            window.print(document.querySelector(".outprint"))
+        }, 125)
+    }).then(() => {
+        setTimeout(() => {
+            outprint.remove()
+            outprint.innerHTML = ""
+        }, 2000)
+    })
 }
