@@ -35,6 +35,6 @@ const printElements = options => {
       setTimeout(() => {
           outprint.remove()
           outprint.innerHTML = ""
-      }, 2000)
+      }, 250)
   })
 }
