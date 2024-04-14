@@ -1,40 +1,31 @@
-const printElements = options => {
-  let outprint = document.createElement("div")
-  outprint.classList.add("outprint")
-  document.querySelector("body").append(outprint)
+import "./printElements.css";
 
-  let { targets, tags, willNotPrint, wrapper } = options
-  tags = tags.toString()
-  willNotPrint = willNotPrint.replace(".", "")
+export const printElements = async (options) => {
+  const outprint = document.createElement("div");
+  outprint.classList.add("outprint");
+  document.body.appendChild(outprint);
 
-  let promises = []
-  let html = []
+  const { targets, tags, willNotPrint = "", wrapper = "main" } = options;
 
-  targets.forEach(target => {
-      promises.push(fetch(target)
-          .then(response => response.text())
-          .then(string => html.push(new DOMParser().parseFromString(string, "text/html"))))
+  const fetchAndParse = async (url) => {
+    const response = await fetch(url);
+    const text = await response.text();
 
-  })
+    return new DOMParser().parseFromString(text, "text/html");
+  };
 
-  Promise.all(promises).then(() => {
-      html.forEach(page => {
-          let elem = []
+  const htmlPages = await Promise.all(targets.map(fetchAndParse));
 
-          page.querySelector(wrapper ? wrapper : "main").querySelectorAll(tags).forEach(item => elem.push(item.cloneNode(true)))
+  htmlPages.forEach((page) => {
+    const elements = Array.from(
+      page.querySelector(wrapper).querySelectorAll(tags.toString())
+    )
+      .filter((item) => !item.classList.contains(willNotPrint))
+      .forEach((item) => outprint.appendChild(item.cloneNode(true)));
+  });
 
-          elem = elem.filter(item => !item.classList.contains(willNotPrint))
-
-          elem.forEach(item => document.querySelector(".outprint").append(item))
-      })
-
-      setTimeout(() => {
-          window.print(document.querySelector(".outprint"))
-      }, 125)
-  }).then(() => {
-      setTimeout(() => {
-          outprint.remove()
-          outprint.innerHTML = ""
-      }, 250)
-  })
-}
+  setTimeout(() => {
+    window.print();
+    outprint.remove();
+  }, 125);
+};
