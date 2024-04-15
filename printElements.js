@@ -1,5 +1,18 @@
 export const printElements = async (options) => {
-  const { targets, tags, willNotPrint = "", wrapper = "main" } = options;
+  const {
+    targets,
+    tags,
+    willNotPrint = "",
+    wrapper = "main",
+    delay = 125
+  } = options;
+  if (!document.body) {
+    console.error(
+      "printElements must be run in a browser environment with a loaded DOM."
+    );
+    return;
+  }
+
   const outprint = createOutprintElement();
 
   try {
@@ -11,7 +24,7 @@ export const printElements = async (options) => {
       willNotPrint,
       outprint
     );
-    schedulePrintAndCleanup(outprint);
+    schedulePrintAndCleanup(outprint, delay);
   } catch (error) {
     console.error(
       "An error occurred during the printElements operation:",
@@ -46,18 +59,23 @@ const appendFilteredElementsToOutprint = (
   outprint
 ) => {
   pages.forEach((page) => {
-    const elements = page.querySelector(wrapper).querySelectorAll(tags);
+    const wrapperElement = page.querySelector(wrapper);
+    if (!wrapperElement) {
+      console.error(`Wrapper element "${wrapper}" not found in the page.`);
+      return;
+    }
+    const elements = wrapperElement.querySelectorAll(tags);
     Array.from(elements)
       .filter((item) => !item.classList.contains(willNotPrint))
       .forEach((item) => outprint.appendChild(item.cloneNode(true)));
   });
 };
 
-const schedulePrintAndCleanup = (outprint) => {
+const schedulePrintAndCleanup = (outprint, delay) => {
   setTimeout(() => {
     window.print();
     cleanUpDOM(outprint);
-  }, 125);
+  }, delay);
 };
 
 const cleanUpDOM = (outprint) => outprint.remove();

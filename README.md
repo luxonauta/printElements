@@ -8,8 +8,10 @@ Creating a print-ready PDF from web content can be tricky and time-consuming. Th
 
 ## Features
 
-- Select specific HTML tags for printing;
-- Exclude elements with a designated class from the print output.
+- Select specific HTML tags within a specified container for printing;
+- Exclude elements with a designated class from the print output;
+- Handles dynamic DOM environments by ensuring the print operation is only executed when the DOM is fully accessible;
+- Provides flexibility with configurable delay options to manage different rendering times.
 
 ## Quick Start
 
@@ -44,13 +46,16 @@ Wrap the content to be printed within a `<main>` tag. Then call `printElements(o
       <h1>Your Content Here</h1>
       <!-- Additional content -->
     </main>
+    <button id="printBtn">Print</button>
     <script src="path/to/printElements.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const printOptions = {
           targets: ["index.html"],
           tags: ["h1", "p", "li"],
-          willNotPrint: "exclude"
+          willNotPrint: "exclude",
+          wrapper: "main",
+          delay: 150 // Optional delay in milliseconds before printing
         };
 
         document.getElementById("printBtn").onclick = () =>
@@ -61,7 +66,9 @@ Wrap the content to be printed within a `<main>` tag. Then call `printElements(o
 </html>
 ```
 
-- `willNotPrint`: Apply the class `"exclude"` to any HTML element to prevent it from being printed.
+- `wrapper`: Specify the container element whose contents you want to print (default is `"main"`);
+- `willNotPrint`: Apply the class `"exclude"` to any HTML element within the wrapper to prevent it from being printed;
+- `delay`: Customize the delay in milliseconds before the print command is executed, to ensure all content is rendered properly.
 
 ### License
 
