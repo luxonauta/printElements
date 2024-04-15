@@ -29,7 +29,7 @@ Creating a print-ready PDF from web content can be tricky and time-consuming. Th
 />
 ```
 
-Or download it directly from the [GitHub repository](https://github.com/luxonauta/printElements/tree/master/dist).
+Or download it directly from the [GitHub repository](https://github.com/luxonauta/printElements/tree/main/dist).
 
 ## Usage
 
