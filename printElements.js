@@ -8,7 +8,7 @@ export const printElements = async (options) => {
   } = options;
   if (!document.body) {
     console.error(
-      "printElements must be run in a browser environment with a loaded DOM."
+      "printElements must run in a browser environment with a fully loaded DOM."
     );
     return;
   }
@@ -61,7 +61,9 @@ const appendFilteredElementsToOutprint = (
   pages.forEach((page) => {
     const wrapperElement = page.querySelector(wrapper);
     if (!wrapperElement) {
-      console.error(`Wrapper element "${wrapper}" not found in the page.`);
+      console.error(
+        `Wrapper element "${wrapper}" not found in the page at URL: ${url}.`
+      );
       return;
     }
     const elements = wrapperElement.querySelectorAll(tags);
