@@ -8,7 +8,11 @@ export default {
   output: {
     file: "dist/printElements.min.js",
     format: "umd",
-    name: "printElements"
+    name: "printElements",
+    globals: {
+      printElements: "printElements"
+    },
+    exports: "named"
   },
   plugins: [
     nodeResolve(),
@@ -21,5 +25,6 @@ export default {
       minimize: true
     }),
     terser()
-  ]
+  ],
+  external: ["printElements"]
 };
